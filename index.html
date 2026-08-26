@@ -1,1251 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Harsha Vardhan | Cybersecurity Portfolio</title>
-
-    <meta name="description"
-          content="Harsha Vardhan's cybersecurity portfolio — SOC operations, threat hunting, network security, incident investigation and hands-on security projects.">
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Inter, Arial, Helvetica, sans-serif;
-            background: #07111f;
-            color: #e6edf3;
-            line-height: 1.7;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .container {
-            width: min(1150px, 92%);
-            margin: auto;
-        }
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(7, 17, 31, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #1c3047;
-        }
-
-        .nav-inner {
-            min-height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 20px;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: #00e676;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #b8c7d9;
-            font-size: 14px;
-            transition: 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #00e676;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 650px;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            align-items: center;
-            gap: 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: rgba(0, 230, 118, 0.07);
-            border-radius: 50%;
-            filter: blur(80px);
-            right: -150px;
-            top: 80px;
-            z-index: -1;
-        }
-
-        .eyebrow {
-            color: #00e676;
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 6vw, 70px);
-            line-height: 1.05;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: #00e676;
-        }
-
-        .hero h2 {
-            font-size: 23px;
-            font-weight: 500;
-            color: #b8c7d9;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            color: #9fb0c3;
-            max-width: 680px;
-            font-size: 17px;
-        }
-
-        .buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-top: 30px;
-        }
-
-        .btn {
-            padding: 12px 20px;
-            border-radius: 8px;
-            border: 1px solid #29425d;
-            transition: 0.2s;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .btn-primary {
-            background: #00e676;
-            color: #06110b;
-            border-color: #00e676;
-        }
-
-        .btn-primary:hover {
-            background: #69f0ae;
-        }
-
-        .btn-secondary:hover {
-            border-color: #00e676;
-            color: #00e676;
-        }
-
-        /* =========================
-           TERMINAL CARD
-        ========================= */
-
-        .terminal {
-            background: #091522;
-            border: 1px solid #20354b;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
-        }
-
-        .terminal-header {
-            padding: 12px 16px;
-            background: #0d1d2e;
-            border-bottom: 1px solid #20354b;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #526477;
-        }
-
-        .terminal-title {
-            margin-left: 8px;
-            color: #8294a8;
-            font-size: 12px;
-        }
-
-        .terminal-body {
-            padding: 25px;
-            font-family: "Courier New", monospace;
-            font-size: 14px;
-            min-height: 350px;
-        }
-
-        .terminal-line {
-            margin-bottom: 13px;
-        }
-
-        .green {
-            color: #00e676;
-        }
-
-        .blue {
-            color: #64b5f6;
-        }
-
-        .gray {
-            color: #8191a4;
-        }
-
-        /* =========================
-           SECTION
-        ========================= */
-
-        section {
-            padding: 90px 0;
-        }
-
-        .section-heading {
-            margin-bottom: 40px;
-        }
-
-        .section-heading .small {
-            color: #00e676;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 13px;
-        }
-
-        .section-heading h2 {
-            font-size: 36px;
-            margin-top: 8px;
-        }
-
-        .section-heading p {
-            color: #8fa2b6;
-            max-width: 700px;
-            margin-top: 10px;
-        }
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 30px;
-        }
-
-        .card {
-            background: #0b1928;
-            border: 1px solid #1c3047;
-            border-radius: 14px;
-            padding: 30px;
-        }
-
-        .card p {
-            color: #a9b8c9;
-            margin-bottom: 15px;
-        }
-
-        .focus-list {
-            list-style: none;
-        }
-
-        .focus-list li {
-            padding: 13px 0;
-            border-bottom: 1px solid #1b2c40;
-            color: #c8d4e0;
-        }
-
-        .focus-list li:last-child {
-            border-bottom: none;
-        }
-
-        /* =========================
-           SECURITY DOMAINS
-        ========================= */
-
-        .domain-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .domain {
-            background: #0b1928;
-            border: 1px solid #1c3047;
-            padding: 25px;
-            border-radius: 12px;
-            transition: 0.2s;
-        }
-
-        .domain:hover {
-            border-color: #00e676;
-            transform: translateY(-4px);
-        }
-
-        .domain-icon {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-
-        .domain h3 {
-            margin-bottom: 8px;
-        }
-
-        .domain p {
-            color: #8fa2b6;
-            font-size: 14px;
-        }
-
-        /* =========================
-           PROJECTS
-        ========================= */
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .project {
-            background: #0b1928;
-            border: 1px solid #1c3047;
-            border-radius: 14px;
-            padding: 27px;
-            transition: 0.2s;
-        }
-
-        .project:hover {
-            transform: translateY(-5px);
-            border-color: #00e676;
-        }
-
-        .project-number {
-            color: #00e676;
-            font-family: monospace;
-            font-size: 13px;
-        }
-
-        .project h3 {
-            margin: 12px 0;
-        }
-
-        .project p {
-            color: #8fa2b6;
-            font-size: 14px;
-            margin-bottom: 18px;
-        }
-
-        .project-link {
-            color: #00e676;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        /* =========================
-           SKILLS
-        ========================= */
-
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .skill-group {
-            background: #0b1928;
-            border: 1px solid #1c3047;
-            border-radius: 12px;
-            padding: 25px;
-        }
-
-        .skill-group h3 {
-            margin-bottom: 18px;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tag {
-            padding: 6px 11px;
-            background: #101f30;
-            border: 1px solid #263d55;
-            border-radius: 6px;
-            color: #b9c8d7;
-            font-size: 13px;
-        }
-
-        /* =========================
-           BLOG CTA
-        ========================= */
-
-        .blog-cta {
-            background: linear-gradient(135deg, #0b1928, #0d2330);
-            border: 1px solid #1c3047;
-            border-radius: 18px;
-            padding: 55px;
-            text-align: center;
-        }
-
-        .blog-cta h2 {
-            font-size: 34px;
-            margin-bottom: 12px;
-        }
-
-        .blog-cta p {
-            color: #91a4b8;
-            max-width: 650px;
-            margin: auto;
-        }
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact {
-            text-align: center;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            border-top: 1px solid #1c3047;
-            padding: 30px 0;
-            text-align: center;
-            color: #718397;
-            font-size: 14px;
-        }
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 850px) {
-
-            .hero,
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .domain-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 60px 0;
-            }
-        }
-
-        @media (max-width: 550px) {
-
-            .domain-grid {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 65px 0;
-            }
-
-            .blog-cta {
-                padding: 35px 20px;
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harsha Vardhan | Cybersecurity Portfolio</title>
+<meta name="description" content="Harsha Vardhan's cybersecurity portfolio — SOC operations, threat hunting, network security, incident investigation and hands-on security projects.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,Helvetica,sans-serif;background:#101820;color:#edf2f7;line-height:1.7}
+a{color:inherit;text-decoration:none}
+.container{width:min(1150px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:1000;background:rgba(16,24,32,.94);backdrop-filter:blur(12px);border-bottom:1px solid #2b3946}
+.nav-inner{min-height:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:20px;letter-spacing:1px}.logo span{color:#f4b942}
+.nav-links{display:flex;gap:25px;list-style:none}.nav-links a{color:#bdc9d4;font-size:14px}.nav-links a:hover{color:#f4b942}
+.hero{min-height:650px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:60px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:500px;height:500px;background:rgba(244,185,66,.08);border-radius:50%;filter:blur(85px);right:-150px;top:80px;z-index:-1}
+.eyebrow{color:#f4b942;font-weight:700;font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-size:clamp(42px,6vw,70px);line-height:1.05;margin-bottom:20px}.hero h1 span{color:#f4b942}
+.hero h2{font-size:23px;font-weight:500;color:#c2ced9;margin-bottom:20px}.hero p{color:#9eacb9;max-width:680px;font-size:17px}
+.buttons{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}.btn{padding:12px 20px;border-radius:8px;border:1px solid #3a4855;transition:.2s;font-weight:700;font-size:14px}
+.btn-primary{background:#f4b942;color:#17130a;border-color:#f4b942}.btn-primary:hover{background:#ffd36a}.btn-secondary:hover{border-color:#f4b942;color:#f4b942}
+.terminal{background:#141f29;border:1px solid #2b3946;border-radius:14px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.32)}
+.terminal-header{padding:12px 16px;background:#182530;border-bottom:1px solid #2b3946;display:flex;align-items:center;gap:8px}.dot{width:10px;height:10px;border-radius:50%;background:#657585}.terminal-title{margin-left:8px;color:#8d9aa7;font-size:12px}
+.terminal-body{padding:25px;font-family:"Courier New",monospace;font-size:14px;min-height:350px}.terminal-line{margin-bottom:13px}.saffron{color:#f4b942}.blue{color:#72b7e8}.gray{color:#8f9daa}
+section{padding:90px 0}.section-heading{margin-bottom:40px}.section-heading .small{color:#f4b942;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:13px}.section-heading h2{font-size:36px;margin-top:8px}.section-heading p{color:#91a0ad;max-width:700px;margin-top:10px}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px}.card{background:#16222d;border:1px solid #2b3946;border-radius:14px;padding:30px}.card p{color:#aeb9c3;margin-bottom:15px}.experience-card{margin-top:22px}.experience-card h3{margin-bottom:8px}.experience-role{color:#f4b942;font-weight:700;margin-bottom:16px}.focus-list{list-style:none}.focus-list li{padding:13px 0;border-bottom:1px solid #293844;color:#c8d2db}.focus-list li:last-child{border-bottom:none}
+.domain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.domain{background:#16222d;border:1px solid #2b3946;padding:25px;border-radius:12px;transition:.2s}.domain:hover{border-color:#f4b942;transform:translateY(-4px)}.domain-icon{font-size:28px;margin-bottom:15px}.domain h3{margin-bottom:8px}.domain p{color:#8f9eac;font-size:14px}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.project{background:#16222d;border:1px solid #2b3946;border-radius:14px;padding:27px;transition:.2s}.project:hover{transform:translateY(-5px);border-color:#f4b942}.project-number{color:#f4b942;font-family:monospace;font-size:13px}.project h3{margin:12px 0}.project p{color:#8f9eac;font-size:14px;margin-bottom:18px}.project-link{color:#f4b942;font-weight:700;font-size:14px}
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.skill-group{background:#16222d;border:1px solid #2b3946;border-radius:12px;padding:25px}.skill-group h3{margin-bottom:18px}.tags{display:flex;flex-wrap:wrap;gap:8px}.tag{padding:6px 11px;background:#1c2a35;border:1px solid #354654;border-radius:6px;color:#bdc8d1;font-size:13px}
+.blog-cta{background:linear-gradient(135deg,#16222d,#1b2933);border:1px solid #2b3946;border-radius:18px;padding:55px;text-align:center}.blog-cta h2{font-size:34px;margin-bottom:12px}.blog-cta p{color:#91a0ad;max-width:650px;margin:auto}
+.contact{text-align:center}.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:15px;margin-top:25px}
+footer{border-top:1px solid #2b3946;padding:30px 0;text-align:center;color:#73818e;font-size:14px}
+@media(max-width:850px){.hero,.about-grid{grid-template-columns:1fr}.domain-grid{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:1fr}.skills{grid-template-columns:1fr}.nav-links{display:none}.hero{padding:60px 0}}
+@media(max-width:550px){.domain-grid{grid-template-columns:1fr}section{padding:65px 0}.blog-cta{padding:35px 20px}}
+</style>
 </head>
-
-
 <body>
-
-
-<!-- =========================
-     NAVIGATION
-========================= -->
-
-<nav>
-
-    <div class="container nav-inner">
-
-        <a href="#top" class="logo">
-            HARSH<span>A</span>
-        </a>
-
-        <ul class="nav-links">
-
-            <li><a href="#about">About</a></li>
-
-            <li><a href="#focus">Security Focus</a></li>
-
-            <li><a href="#projects">Projects</a></li>
-
-            <li><a href="#skills">Skills</a></li>
-
-            <li>
-                <a href="blogs/">
-                    Blogs
-                </a>
-            </li>
-
-            <li>
-                <a href="https://www.linkedin.com/in/harshavardhan-soudam/"
-                   target="_blank">
-                    LinkedIn
-                </a>
-            </li>
-
-        </ul>
-
-    </div>
-
-</nav>
-
+<nav><div class="container nav-inner">
+<a href="#top" class="logo">HARSH<span>A</span></a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li><li><a href="#focus">Security Focus</a></li><li><a href="#projects">Projects</a></li><li><a href="#skills">Skills</a></li><li><a href="blogs/">Blogs</a></li><li><a href="https://www.linkedin.com/in/harshavardhan-soudam/" target="_blank">LinkedIn</a></li>
+</ul></div></nav>
 
 <main id="top">
-
-
-<!-- =========================
-     HERO
-========================= -->
-
 <section class="hero container">
+<div>
+<div class="eyebrow">Cybersecurity Portfolio</div>
+<h1>Hi, I'm <span>Harsha</span>.</h1>
+<h2>Cybersecurity Enthusiast · Aspiring SOC Analyst</h2>
+<p>I build hands-on cybersecurity projects focused on security monitoring, threat hunting, network security, incident investigation, and practical SOC operations.</p>
+<div class="buttons">
+<a class="btn btn-primary" href="#projects">View Projects</a>
+<a class="btn btn-secondary" href="blogs/">Read Cybersecurity Blogs</a>
+<a class="btn btn-secondary" href="https://www.linkedin.com/in/harshavardhan-soudam/" target="_blank">LinkedIn</a>
+</div></div>
 
-    <div>
-
-        <div class="eyebrow">
-            Cybersecurity Portfolio
-        </div>
-
-        <h1>
-            Hi, I'm <span>Harsha</span>.
-        </h1>
-
-        <h2>
-            Cybersecurity Enthusiast · Aspiring SOC Analyst
-        </h2>
-
-        <p>
-            I build hands-on cybersecurity projects focused on
-            security monitoring, threat hunting, network security,
-            incident investigation, and practical SOC operations.
-        </p>
-
-        <div class="buttons">
-
-            <a class="btn btn-primary" href="#projects">
-                View Projects
-            </a>
-
-            <a class="btn btn-secondary" href="blogs/">
-                Read Cybersecurity Blogs
-            </a>
-
-            <a class="btn btn-secondary"
-               href="https://www.linkedin.com/in/harshavardhan-soudam/"
-               target="_blank">
-                LinkedIn
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <!-- TERMINAL -->
-
-    <div class="terminal">
-
-        <div class="terminal-header">
-
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-
-            <span class="terminal-title">
-                soc-investigation.sh
-            </span>
-
-        </div>
-
-        <div class="terminal-body">
-
-            <div class="terminal-line">
-                <span class="green">$</span>
-                whoami
-            </div>
-
-            <div class="terminal-line blue">
-                harsha-soudam
-            </div>
-
-            <br>
-
-            <div class="terminal-line">
-                <span class="green">$</span>
-                cat security-focus.txt
-            </div>
-
-            <div class="terminal-line gray">
-                SOC Operations
-            </div>
-
-            <div class="terminal-line gray">
-                Threat Hunting
-            </div>
-
-            <div class="terminal-line gray">
-                Network Security
-            </div>
-
-            <div class="terminal-line gray">
-                Incident Investigation
-            </div>
-
-            <div class="terminal-line gray">
-                Security Monitoring
-            </div>
-
-            <br>
-
-            <div class="terminal-line">
-                <span class="green">$</span>
-                tools
-            </div>
-
-            <div class="terminal-line blue">
-                Wireshark · Splunk · Sysmon
-            </div>
-
-            <div class="terminal-line blue">
-                Cisco · Nmap · Burp Suite
-            </div>
-
-            <div class="terminal-line blue">
-                Linux · Python
-            </div>
-
-            <br>
-
-            <div class="terminal-line">
-                <span class="green">$</span>
-                status
-            </div>
-
-            <div class="terminal-line green">
-                Building. Investigating. Learning.
-            </div>
-
-        </div>
-
-    </div>
-
+<div class="terminal">
+<div class="terminal-header"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="terminal-title">soc-investigation.sh</span></div>
+<div class="terminal-body">
+<div class="terminal-line"><span class="saffron">$</span> whoami</div>
+<div class="terminal-line blue">harsha-soudam</div><br>
+<div class="terminal-line"><span class="saffron">$</span> cat security-focus.txt</div>
+<div class="terminal-line gray">SOC Operations</div><div class="terminal-line gray">Threat Hunting</div><div class="terminal-line gray">Network Security</div><div class="terminal-line gray">Incident Investigation</div><div class="terminal-line gray">Security Monitoring</div><br>
+<div class="terminal-line"><span class="saffron">$</span> tools</div>
+<div class="terminal-line blue">Wireshark · Splunk · Sysmon</div><div class="terminal-line blue">Cisco · Nmap · Burp Suite</div><div class="terminal-line blue">Linux · Python</div><br>
+<div class="terminal-line"><span class="saffron">$</span> status</div>
+<div class="terminal-line saffron">Building. Investigating. Learning.</div>
+</div></div>
 </section>
 
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section id="about">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div class="small">
-                About Me
-            </div>
-
-            <h2>
-                Building practical cybersecurity skills
-            </h2>
-
-        </div>
-
-
-        <div class="about-grid">
-
-
-            <div class="card">
-
-                <p>
-                    I'm a cybersecurity enthusiast focused on developing
-                    practical skills in Security Operations, threat
-                    detection, network security, and incident investigation.
-                </p>
-
-                <p>
-                    My learning approach is hands-on. Instead of only
-                    studying security concepts theoretically, I build
-                    labs, generate security telemetry, investigate events,
-                    analyze network traffic, and document the findings.
-                </p>
-
-                <p>
-                    My projects cover areas such as Wireshark packet
-                    analysis, Splunk investigations, Sysmon threat hunting,
-                    phishing analysis, ransomware investigations, cloud
-                    security, and network security.
-                </p>
-
-                <p>
-                    I use these projects to develop the practical
-                    investigation mindset required in a SOC environment:
-                    understanding what happened, finding the evidence,
-                    determining whether activity is malicious, and
-                    documenting the investigation clearly.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>🎯 Current Focus</h3>
-
-                <ul class="focus-list">
-
-                    <li>
-                        🔍 Security Monitoring & Detection
-                    </li>
-
-                    <li>
-                        🛡️ SOC Operations
-                    </li>
-
-                    <li>
-                        🎯 Threat Hunting
-                    </li>
-
-                    <li>
-                        🌐 Network Security
-                    </li>
-
-                    <li>
-                        🚨 Incident Investigation
-                    </li>
-
-                    <li>
-                        📊 Log & Event Analysis
-                    </li>
-
-                    <li>
-                        🧠 MITRE ATT&CK
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     SECURITY FOCUS
-========================= -->
-
-<section id="focus">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div class="small">
-                Security Focus
-            </div>
-
-            <h2>
-                What I work with
-            </h2>
-
-            <p>
-                Areas where I am building practical cybersecurity
-                and SOC capabilities through hands-on projects.
-            </p>
-
-        </div>
-
-
-        <div class="domain-grid">
-
-
-            <div class="domain">
-
-                <div class="domain-icon">
-                    🔍
-                </div>
-
-                <h3>
-                    SOC Operations
-                </h3>
-
-                <p>
-                    Security monitoring, alert analysis,
-                    event correlation, investigation and
-                    incident documentation.
-                </p>
-
-            </div>
-
-
-            <div class="domain">
-
-                <div class="domain-icon">
-                    🎯
-                </div>
-
-                <h3>
-                    Threat Hunting
-                </h3>
-
-                <p>
-                    Hunting suspicious processes, DNS activity,
-                    network behavior and endpoint telemetry.
-                </p>
-
-            </div>
-
-
-            <div class="domain">
-
-                <div class="domain-icon">
-                    🌐
-                </div>
-
-                <h3>
-                    Network Security
-                </h3>
-
-                <p>
-                    Packet analysis, TCP/IP, DNS, Wireshark,
-                    Cisco networking and traffic investigation.
-                </p>
-
-            </div>
-
-
-            <div class="domain">
-
-                <div class="domain-icon">
-                    🚨
-                </div>
-
-                <h3>
-                    Incident Response
-                </h3>
-
-                <p>
-                    Investigating phishing, brute force,
-                    ransomware and cloud security incidents.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     PROJECTS
-========================= -->
-
-<section id="projects">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div class="small">
-                Hands-on Work
-            </div>
-
-            <h2>
-                Featured Projects
-            </h2>
-
-            <p>
-                Practical projects and investigations that demonstrate
-                my approach to learning cybersecurity through implementation.
-            </p>
-
-        </div>
-
-
-        <div class="project-grid">
-
-
-            <div class="project">
-
-                <div class="project-number">
-                    PROJECT 01
-                </div>
-
-                <h3>
-                    🛡️ SOC Enterprise Lab
-                </h3>
-
-                <p>
-                    Hands-on enterprise-style security labs focused on
-                    security monitoring, detection, investigation and
-                    incident response workflows.
-                </p>
-
-                <a class="project-link"
-                   href="https://github.com/harsha-soudam"
-                   target="_blank">
-                    Explore GitHub →
-                </a>
-
-            </div>
-
-
-            <div class="project">
-
-                <div class="project-number">
-                    PROJECT 02
-                </div>
-
-                <h3>
-                    🎯 Threat Hunting Series
-                </h3>
-
-                <p>
-                    Endpoint threat-hunting investigations using Sysmon,
-                    process creation telemetry, DNS activity and
-                    investigation methodology.
-                </p>
-
-                <a class="project-link"
-                   href="blogs/">
-                    Read Investigations →
-                </a>
-
-            </div>
-
-
-            <div class="project">
-
-                <div class="project-number">
-                    PROJECT 03
-                </div>
-
-                <h3>
-                    🌐 Network Security Labs
-                </h3>
-
-                <p>
-                    Networking and security projects involving Cisco
-                    Packet Tracer, Wireshark, packet analysis,
-                    routing, switching and network troubleshooting.
-                </p>
-
-                <a class="project-link"
-                   href="https://github.com/harsha-soudam"
-                   target="_blank">
-                    Explore GitHub →
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     SKILLS
-========================= -->
-
-<section id="skills">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div class="small">
-                Technical Skills
-            </div>
-
-            <h2>
-                Security toolkit
-            </h2>
-
-        </div>
-
-
-        <div class="skills">
-
-
-            <div class="skill-group">
-
-                <h3>
-                    🔐 Security & SOC
-                </h3>
-
-                <div class="tags">
-
-                    <span class="tag">Splunk</span>
-                    <span class="tag">Sysmon</span>
-                    <span class="tag">Wireshark</span>
-                    <span class="tag">Nmap</span>
-                    <span class="tag">Burp Suite</span>
-                    <span class="tag">Nessus</span>
-                    <span class="tag">MITRE ATT&CK</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="skill-group">
-
-                <h3>
-                    🌐 Networking
-                </h3>
-
-                <div class="tags">
-
-                    <span class="tag">TCP/IP</span>
-                    <span class="tag">DNS</span>
-                    <span class="tag">DHCP</span>
-                    <span class="tag">VLAN</span>
-                    <span class="tag">Routing</span>
-                    <span class="tag">Cisco IOS</span>
-                    <span class="tag">Packet Analysis</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="skill-group">
-
-                <h3>
-                    💻 Platforms & Languages
-                </h3>
-
-                <div class="tags">
-
-                    <span class="tag">Python</span>
-                    <span class="tag">Linux</span>
-                    <span class="tag">GitHub</span>
-
-                </div>
-
-            </div>
-
-
-            <div class="skill-group">
-
-                <h3>
-                    📊 Monitoring
-                </h3>
-
-                <div class="tags">
-
-                    <span class="tag">Grafana</span>
-                    <span class="tag">Zabbix</span>
-                    <span class="tag">Security Monitoring</span>
-                    <span class="tag">Log Analysis</span>
-                    <span class="tag">Event Correlation</span>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     BLOG
-========================= -->
-
-<section>
-
-    <div class="container">
-
-        <div class="blog-cta">
-
-            <div class="eyebrow">
-                Technical Writing
-            </div>
-
-            <h2>
-                Cybersecurity Investigations
-            </h2>
-
-            <p>
-                Explore my technical write-ups covering SOC investigations,
-                threat hunting, network security, incident response,
-                cloud security and security research.
-            </p>
-
-            <div class="buttons"
-                 style="justify-content:center;">
-
-                <a class="btn btn-primary"
-                   href="blogs/">
-                    Explore All Blogs →
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section class="contact">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div class="small">
-                Connect
-            </div>
-
-            <h2>
-                Let's connect
-            </h2>
-
-            <p style="margin: 10px auto;">
-                Interested in cybersecurity, SOC operations,
-                security research, or collaboration?
-            </p>
-
-        </div>
-
-
-        <div class="contact-links">
-
-            <a class="btn btn-secondary"
-               href="https://github.com/harsha-soudam"
-               target="_blank">
-                GitHub
-            </a>
-
-            <a class="btn btn-secondary"
-               href="https://www.linkedin.com/in/harshavardhan-soudam/"
-               target="_blank">
-                LinkedIn
-            </a>
-
-            <a class="btn btn-secondary"
-               href="mailto:harsha3954@gmail.com">
-                Email
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
+<section id="about"><div class="container">
+<div class="section-heading"><div class="small">About Me</div><h2>Building practical cybersecurity skills</h2></div>
+<div class="about-grid">
+<div>
+<div class="card">
+<p>I'm a cybersecurity enthusiast focused on developing practical skills in Security Operations, threat detection, network security, and incident investigation.</p>
+<p>My learning approach is hands-on. Instead of only studying security concepts theoretically, I build labs, generate security telemetry, investigate events, analyze network traffic, and document the findings.</p>
+<p>My projects cover areas such as Wireshark packet analysis, Splunk investigations, Sysmon threat hunting, phishing analysis, ransomware investigations, cloud security, and network security.</p>
+<p>I use these projects to develop the practical investigation mindset required in a SOC environment: understanding what happened, finding the evidence, determining whether activity is malicious, and documenting the investigation clearly.</p>
+</div>
+
+<div class="card experience-card">
+<h3>💼 Previous Professional Experience</h3>
+<div class="experience-role">Network Operations Analyst</div>
+<p>Provided Tier 1 technical support by troubleshooting system alerts, investigating 4xx/5xx error trends, and resolving client-reported issues; escalated high-impact incidents to Tier 2 with clear documentation.</p>
+<p>Supported high-traffic live streaming events through real-time monitoring and cross-team coordination during scheduled maintenance and production deployment windows.</p>
+<p>Coordinated traffic draining and restoration activities during scheduled maintenance windows and production deployment events.</p>
+<p>Collaborated directly with external partners—including Verizon FiOS, Amazon Prime, Hotstar, CBS, and Akamai—to validate, troubleshoot, and resolve issues.</p>
+<p>Analyzed and correlated incoming alert streams across distributed nodes to identify traffic patterns and flag recurring infrastructure issues.</p>
+<p>Managed incident tracking by documenting tickets with detailed troubleshooting information and administering user access within the internal QC Services Portal.</p>
+</div>
+</div>
+
+<div class="card">
+<h3>🎯 Current Security Focus</h3>
+<ul class="focus-list">
+<li>🔍 Security Monitoring & Detection</li><li>🛡️ SOC Operations</li><li>🎯 Threat Hunting</li><li>🌐 Network Security</li><li>🚨 Incident Investigation</li><li>📊 Log & Event Analysis</li><li>🧠 MITRE ATT&CK</li>
+</ul>
+</div>
+</div></div></section>
+
+<section id="focus"><div class="container">
+<div class="section-heading"><div class="small">Security Focus</div><h2>What I work with</h2><p>Areas where I am building practical cybersecurity and SOC capabilities through hands-on projects.</p></div>
+<div class="domain-grid">
+<div class="domain"><div class="domain-icon">🔍</div><h3>SOC Operations</h3><p>Security monitoring, alert analysis, event correlation, investigation and incident documentation.</p></div>
+<div class="domain"><div class="domain-icon">🎯</div><h3>Threat Hunting</h3><p>Hunting suspicious processes, DNS activity, network behavior and endpoint telemetry.</p></div>
+<div class="domain"><div class="domain-icon">🌐</div><h3>Network Security</h3><p>Packet analysis, TCP/IP, DNS, Wireshark, Cisco networking and traffic investigation.</p></div>
+<div class="domain"><div class="domain-icon">🚨</div><h3>Incident Response</h3><p>Investigating phishing, brute force, ransomware and cloud security incidents.</p></div>
+</div></div></section>
+
+<section id="projects"><div class="container">
+<div class="section-heading"><div class="small">Hands-on Work</div><h2>Featured Projects</h2><p>Practical projects and investigations that demonstrate my approach to learning cybersecurity through implementation.</p></div>
+<div class="project-grid">
+<div class="project"><div class="project-number">PROJECT 01</div><h3>🛡️ SOC Enterprise Lab</h3><p>Hands-on enterprise-style security labs focused on security monitoring, detection, investigation and incident response workflows.</p><a class="project-link" href="https://github.com/harsha-soudam" target="_blank">Explore GitHub →</a></div>
+<div class="project"><div class="project-number">PROJECT 02</div><h3>🎯 Threat Hunting Series</h3><p>Endpoint threat-hunting investigations using Sysmon, process creation telemetry, DNS activity and investigation methodology.</p><a class="project-link" href="blogs/">Read Investigations →</a></div>
+<div class="project"><div class="project-number">PROJECT 03</div><h3>🌐 Network Security Labs</h3><p>Networking and security projects involving Cisco Packet Tracer, Wireshark, packet analysis, routing, switching and network troubleshooting.</p><a class="project-link" href="https://github.com/harsha-soudam" target="_blank">Explore GitHub →</a></div>
+</div></div></section>
+
+<section id="skills"><div class="container">
+<div class="section-heading"><div class="small">Technical Skills</div><h2>Security toolkit</h2></div>
+<div class="skills">
+<div class="skill-group"><h3>🔐 Security & SOC</h3><div class="tags"><span class="tag">Splunk</span><span class="tag">Sysmon</span><span class="tag">Wireshark</span><span class="tag">Nmap</span><span class="tag">Burp Suite</span><span class="tag">Nessus</span><span class="tag">MITRE ATT&CK</span></div></div>
+<div class="skill-group"><h3>🌐 Networking</h3><div class="tags"><span class="tag">TCP/IP</span><span class="tag">DNS</span><span class="tag">DHCP</span><span class="tag">VLAN</span><span class="tag">Routing</span><span class="tag">Cisco IOS</span><span class="tag">Packet Analysis</span></div></div>
+<div class="skill-group"><h3>💻 Platforms & Languages</h3><div class="tags"><span class="tag">Python</span><span class="tag">Linux</span><span class="tag">GitHub</span></div></div>
+<div class="skill-group"><h3>📊 Monitoring</h3><div class="tags"><span class="tag">Grafana</span><span class="tag">Zabbix</span><span class="tag">Security Monitoring</span><span class="tag">Log Analysis</span><span class="tag">Event Correlation</span></div></div>
+</div></div></section>
+
+<section><div class="container"><div class="blog-cta">
+<div class="eyebrow">Technical Writing</div><h2>Cybersecurity Investigations</h2>
+<p>Explore my technical write-ups covering SOC investigations, threat hunting, network security, incident response, cloud security and security research.</p>
+<div class="buttons" style="justify-content:center"><a class="btn btn-primary" href="blogs/">Explore All Blogs →</a></div>
+</div></div></section>
+
+<section class="contact"><div class="container">
+<div class="section-heading"><div class="small">Connect</div><h2>Let's connect</h2><p style="margin:10px auto">Interested in cybersecurity, SOC operations, security research, or collaboration?</p></div>
+<div class="contact-links"><a class="btn btn-secondary" href="https://github.com/harsha-soudam" target="_blank">GitHub</a><a class="btn btn-secondary" href="https://www.linkedin.com/in/harshavardhan-soudam/" target="_blank">LinkedIn</a><a class="btn btn-secondary" href="mailto:harsha3954@gmail.com">Email</a></div>
+</div></section>
 </main>
-
-
-<footer>
-
-    <div class="container">
-
-        <p>
-            © 2026 Harsha Vardhan · Cybersecurity Portfolio
-        </p>
-
-    </div>
-
-</footer>
-
-
+<footer><div class="container"><p>© 2026 Harsha Vardhan · Cybersecurity Portfolio</p></div></footer>
 </body>
-
 </html>
