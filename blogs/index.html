@@ -2,100 +2,287 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cybersecurity Blogs | Harsha</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cybersecurity Research & Blogs | Harsha</title>
+
+    <meta name="description"
+          content="Cybersecurity investigations, SOC research, threat hunting and network security write-ups by Harsha Vardhan.">
 
     <style>
 
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 1000px;
-            margin: auto;
-            padding: 40px 20px;
-            line-height: 1.6;
-            color: #222;
-            background: #ffffff;
+            margin: 0;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background: #07111f;
+            color: #e6edf3;
+            line-height: 1.7;
         }
 
-        header {
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: auto;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7, 17, 31, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1c3047;
+        }
+
+        .nav {
+            min-height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #00e676;
+        }
+
+        .nav a {
+            color: #a8b8ca;
+            font-size: 14px;
+        }
+
+        .nav a:hover {
+            color: #00e676;
+        }
+
+        /* HERO */
+
+        .hero {
             text-align: center;
-            padding: 45px 20px 35px;
+            padding: 100px 20px 80px;
+            position: relative;
+            overflow: hidden;
         }
 
-        header h1 {
-            font-size: 42px;
-            margin-bottom: 12px;
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: rgba(0, 230, 118, 0.07);
+            border-radius: 50%;
+            filter: blur(80px);
+            left: 50%;
+            top: 30px;
+            transform: translateX(-50%);
+            z-index: -1;
         }
 
-        .subtitle {
-            font-size: 18px;
-            color: #666;
-            max-width: 750px;
+        .eyebrow {
+            color: #00e676;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 65px);
+            line-height: 1.1;
+            margin: 15px 0;
+        }
+
+        .hero p {
+            max-width: 700px;
             margin: auto;
+            color: #91a4b8;
+            font-size: 17px;
         }
+
+        /* STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 65px;
+        }
+
+        .stat {
+            text-align: center;
+            background: #0b1928;
+            border: 1px solid #1c3047;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .stat-number {
+            font-size: 30px;
+            font-weight: 800;
+            color: #00e676;
+        }
+
+        .stat-label {
+            color: #8fa2b6;
+            font-size: 14px;
+        }
+
+        /* SECTION */
+
+        .section-title {
+            margin-bottom: 25px;
+        }
+
+        .section-title span {
+            color: #00e676;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            margin: 5px 0;
+        }
+
+        /* FEATURED */
+
+        .featured {
+            background: linear-gradient(135deg, #0b1928, #0c2530);
+            border: 1px solid #1c3047;
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 65px;
+        }
+
+        .featured-label {
+            color: #00e676;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .featured h2 {
+            font-size: 30px;
+            margin: 10px 0;
+        }
+
+        .featured p {
+            color: #96a9bc;
+            max-width: 800px;
+        }
+
+        /* ARTICLE GRID */
 
         .articles {
-            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
 
         .article {
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            padding: 28px;
-            margin-bottom: 22px;
+            background: #0b1928;
+            border: 1px solid #1c3047;
+            border-radius: 14px;
+            padding: 27px;
             transition: 0.2s ease;
         }
 
         .article:hover {
-            border-color: #999;
-            transform: translateY(-2px);
+            transform: translateY(-5px);
+            border-color: #00e676;
         }
 
-        .article h2 {
-            margin-top: 0;
-            font-size: 24px;
+        .article-number {
+            color: #00e676;
+            font-family: monospace;
+            font-size: 13px;
+        }
+
+        .article h3 {
+            font-size: 21px;
+            margin: 10px 0;
         }
 
         .article p {
-            color: #555;
-        }
-
-        .topics {
+            color: #8fa2b6;
             font-size: 14px;
-            color: #666;
         }
 
-        .button {
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin: 15px 0;
+        }
+
+        .tag {
+            background: #101f30;
+            border: 1px solid #263d55;
+            border-radius: 5px;
+            padding: 4px 8px;
+            font-size: 12px;
+            color: #aebdcb;
+        }
+
+        .read {
             display: inline-block;
-            margin-top: 12px;
-            padding: 10px 18px;
-            border: 1px solid #333;
-            border-radius: 7px;
-            text-decoration: none;
-            color: #222;
-            font-weight: bold;
+            margin-top: 8px;
+            color: #00e676;
+            font-weight: 700;
+            font-size: 14px;
         }
 
-        .button:hover {
-            background: #222;
-            color: white;
-        }
-
-        .back {
-            display: inline-block;
-            margin-top: 25px;
-            text-decoration: none;
-            color: #333;
-        }
+        /* FOOTER */
 
         footer {
+            margin-top: 80px;
+            border-top: 1px solid #1c3047;
+            padding: 30px 0;
             text-align: center;
-            margin-top: 65px;
-            padding-top: 25px;
-            border-top: 1px solid #ddd;
-            color: #777;
+            color: #718397;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            .articles {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .featured {
+                padding: 25px;
+            }
+
         }
 
     </style>
@@ -106,236 +293,440 @@
 <body>
 
 
-<header>
+<nav>
 
-    <h1>✍️ Cybersecurity Blogs</h1>
+    <div class="container nav">
 
-    <p class="subtitle">
-        Hands-on cybersecurity investigations, threat hunting,
-        network security, SOC operations, and security research.
+        <a href="../" class="logo">
+            HARSH<span>A</span>
+        </a>
+
+        <a href="../">
+            ← Back to Portfolio
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="eyebrow">
+        Technical Writing & Research
+    </div>
+
+    <h1>
+        Cybersecurity Blog
+    </h1>
+
+    <p>
+        Hands-on investigations covering SOC operations,
+        threat hunting, network security, incident response,
+        cloud security and security monitoring.
     </p>
-
-</header>
-
-
-<section class="articles">
-
-
-    <!-- ARTICLE 1 -->
-
-    <div class="article">
-
-        <h2>🌐 Packet Sniffing with Wireshark to Capture Login Credentials</h2>
-
-        <p>
-            Exploring how credentials submitted over unencrypted HTTP
-            can be exposed through packet capture and HTTP request
-            analysis using Wireshark.
-        </p>
-
-        <p class="topics">
-            <strong>Topics:</strong>
-            Wireshark · Packet Sniffing · HTTP · Network Security
-        </p>
-
-        <a class="button"
-           href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/01-wireshark-login-credentials">
-            Read Article →
-        </a>
-
-    </div>
-
-
-    <!-- ARTICLE 2 -->
-
-    <div class="article">
-
-        <h2>🚨 Investigating a Brute Force Attack with Splunk</h2>
-
-        <p>
-            A hands-on SOC investigation focused on identifying,
-            analyzing, and understanding brute-force authentication
-            activity using Splunk.
-        </p>
-
-        <p class="topics">
-            <strong>Topics:</strong>
-            Splunk · Brute Force · SOC · Log Analysis · MITRE ATT&CK
-        </p>
-
-        <a class="button"
-           href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/02-investigating-brute-force-attack-with-splunk">
-            Read Article →
-        </a>
-
-    </div>
-
-
-    <!-- ARTICLE 3 -->
-
-    <div class="article">
-
-        <h2>🎣 Investigating a Phishing Email</h2>
-
-        <p>
-            A step-by-step investigation of a suspicious phishing email,
-            focusing on email analysis, indicators of compromise,
-            and investigation methodology.
-        </p>
-
-        <p class="topics">
-            <strong>Topics:</strong>
-            Phishing · Email Security · IOC Analysis · SOC Investigation
-        </p>
-
-        <a class="button"
-           href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/03-investigating-phishing-email">
-            Read Article →
-        </a>
-
-    </div>
-
-
-    <!-- ARTICLE 4 -->
-
-    <div class="article">
-
-        <h2>🦠 Investigating a Cerber Ransomware Attack Using Splunk</h2>
-
-        <p>
-            A SOC investigation analyzing a Cerber ransomware attack
-            using Splunk, following the attack from initial infection
-            through malicious activity and indicators of compromise.
-        </p>
-
-        <p class="topics">
-            <strong>Topics:</strong>
-            Cerber · Ransomware · Splunk · SOC · Incident Response
-        </p>
-
-        <a class="button"
-           href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/04-investigating-cerber-ransomware-splunk">
-            Read Article →
-        </a>
-
-    </div>
-
-
-    <!-- ARTICLE 5 -->
-
-    <div class="article">
-
-        <h2>🔎 Hunting a RIG Exploit Kit Infection with Wireshark</h2>
-
-        <p>
-            A packet-level investigation into a RIG Exploit Kit infection,
-            using Wireshark to analyze network traffic and identify
-            indicators associated with the attack.
-        </p>
-
-        <p class="topics">
-            <strong>Topics:</strong>
-            Wireshark · RIG Exploit Kit · Network Forensics · Threat Hunting
-        </p>
-
-        <a class="button"
-           href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/05-investigating-rig-exploit-kit-wireshark">
-            Read Article →
-        </a>
-
-    </div>
-
-
-    <!-- ARTICLE 6 -->
-
-    <div class="article">
-
-        <h2>☁️ One Exposed API Key, One Cloud Breach</h2>
-
-        <p>
-            A SOC investigation examining how an exposed API key can
-            lead to cloud compromise, mapped to the NIST Cybersecurity
-            Framework 2.0.
-        </p>
-
-        <p class="topics">
-            <strong>Topics:</strong>
-            Cloud Security · API Keys · NIST CSF 2.0 · SOC · Incident Response
-        </p>
-
-        <a class="button"
-           href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/06-investigating-cloud-api-key-breach-nist-csf">
-            Read Article →
-        </a>
-
-    </div>
-
-
-    <!-- ARTICLE 7 -->
-
-    <div class="article">
-
-        <h2>⚙️ Hunting Suspicious Process Creation with Sysmon</h2>
-
-        <p>
-            An endpoint threat-hunting investigation using Sysmon
-            Event ID 1 to identify suspicious process creation,
-            analyze process relationships, and investigate potential
-            malicious activity.
-        </p>
-
-        <p class="topics">
-            <strong>Topics:</strong>
-            Sysmon · Event ID 1 · Process Creation · Threat Hunting · SOC
-        </p>
-
-        <a class="button"
-           href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/07-Hunting-Suspicious-Process-Creation-with-Sysmon-Episode-01">
-            Read Article →
-        </a>
-
-    </div>
-
-
-    <!-- ARTICLE 8 -->
-
-    <div class="article">
-
-        <h2>🌐 Hunting DNS Activity with Sysmon</h2>
-
-        <p>
-            An endpoint threat-hunting investigation using Sysmon
-            Event ID 22 to analyze DNS queries, identify the process
-            responsible for the request, and determine whether
-            suspicious DNS activity is actually malicious.
-        </p>
-
-        <p class="topics">
-            <strong>Topics:</strong>
-            Sysmon · Event ID 22 · DNS · Threat Hunting · SOC
-        </p>
-
-        <a class="button"
-           href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/08-Hunting-DNS-Activity-with-Sysmon-Episode-02">
-            Read Article →
-        </a>
-
-    </div>
-
 
 </section>
 
 
-<a class="back" href="../">
-    ← Back to Portfolio
-</a>
+<div class="container">
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+    <div class="stat">
+
+        <div class="stat-number">
+            08
+        </div>
+
+        <div class="stat-label">
+            Technical Investigations
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-number">
+            SOC
+        </div>
+
+        <div class="stat-label">
+            Investigation Focus
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-number">
+            Hands-on
+        </div>
+
+        <div class="stat-label">
+            Practical Approach
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FEATURED -->
+
+<div class="section-title">
+
+    <span>
+        Featured Investigation
+    </span>
+
+</div>
+
+
+<div class="featured">
+
+    <div class="featured-label">
+        NETWORK SECURITY · WIRESHARK
+    </div>
+
+    <h2>
+        Packet Sniffing with Wireshark to Capture Login Credentials
+    </h2>
+
+    <p>
+        An investigation demonstrating how credentials submitted
+        over unencrypted HTTP can be exposed through packet capture
+        and HTTP request analysis using Wireshark.
+    </p>
+
+    <div class="tags">
+
+        <span class="tag">Wireshark</span>
+        <span class="tag">HTTP</span>
+        <span class="tag">Packet Analysis</span>
+        <span class="tag">Network Security</span>
+
+    </div>
+
+    <a class="read"
+       href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/01-wireshark-login-credentials">
+
+        Read Investigation →
+
+    </a>
+
+</div>
+
+
+<!-- ALL ARTICLES -->
+
+<div class="section-title">
+
+    <span>
+        All Investigations
+    </span>
+
+    <h2>
+        Security Research & Write-ups
+    </h2>
+
+</div>
+
+
+<div class="articles">
+
+
+<!-- 01 -->
+
+<article class="article">
+
+    <div class="article-number">
+        01 · NETWORK SECURITY
+    </div>
+
+    <h3>
+        Packet Sniffing with Wireshark to Capture Login Credentials
+    </h3>
+
+    <p>
+        Analyzing HTTP traffic and understanding how
+        unencrypted credentials can be exposed.
+    </p>
+
+    <div class="tags">
+        <span class="tag">Wireshark</span>
+        <span class="tag">HTTP</span>
+        <span class="tag">Packet Analysis</span>
+    </div>
+
+    <a class="read"
+       href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/01-wireshark-login-credentials">
+
+        Read Article →
+
+    </a>
+
+</article>
+
+
+<!-- 02 -->
+
+<article class="article">
+
+    <div class="article-number">
+        02 · SOC INVESTIGATION
+    </div>
+
+    <h3>
+        Investigating a Brute Force Attack with Splunk
+    </h3>
+
+    <p>
+        Investigating suspicious authentication activity
+        and identifying brute-force behavior using Splunk.
+    </p>
+
+    <div class="tags">
+        <span class="tag">Splunk</span>
+        <span class="tag">Brute Force</span>
+        <span class="tag">SOC</span>
+    </div>
+
+    <a class="read"
+       href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/02-investigating-brute-force-attack-with-splunk">
+
+        Read Article →
+
+    </a>
+
+</article>
+
+
+<!-- 03 -->
+
+<article class="article">
+
+    <div class="article-number">
+        03 · EMAIL SECURITY
+    </div>
+
+    <h3>
+        Investigating a Phishing Email
+    </h3>
+
+    <p>
+        A step-by-step phishing investigation covering
+        email analysis and indicators of compromise.
+    </p>
+
+    <div class="tags">
+        <span class="tag">Phishing</span>
+        <span class="tag">Email Security</span>
+        <span class="tag">IOC</span>
+    </div>
+
+    <a class="read"
+       href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/03-investigating-phishing-email">
+
+        Read Article →
+
+    </a>
+
+</article>
+
+
+<!-- 04 -->
+
+<article class="article">
+
+    <div class="article-number">
+        04 · INCIDENT RESPONSE
+    </div>
+
+    <h3>
+        Investigating a Cerber Ransomware Attack Using Splunk
+    </h3>
+
+    <p>
+        Following a ransomware attack through malicious
+        activity, network events and indicators of compromise.
+    </p>
+
+    <div class="tags">
+        <span class="tag">Cerber</span>
+        <span class="tag">Ransomware</span>
+        <span class="tag">Splunk</span>
+    </div>
+
+    <a class="read"
+       href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/04-investigating-cerber-ransomware-splunk">
+
+        Read Article →
+
+    </a>
+
+</article>
+
+
+<!-- 05 -->
+
+<article class="article">
+
+    <div class="article-number">
+        05 · NETWORK FORENSICS
+    </div>
+
+    <h3>
+        Hunting a RIG Exploit Kit Infection with Wireshark
+    </h3>
+
+    <p>
+        A packet-level investigation into network activity
+        associated with a RIG exploit kit infection.
+    </p>
+
+    <div class="tags">
+        <span class="tag">Wireshark</span>
+        <span class="tag">RIG</span>
+        <span class="tag">Threat Hunting</span>
+    </div>
+
+    <a class="read"
+       href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/05-investigating-rig-exploit-kit-wireshark">
+
+        Read Article →
+
+    </a>
+
+</article>
+
+
+<!-- 06 -->
+
+<article class="article">
+
+    <div class="article-number">
+        06 · CLOUD SECURITY
+    </div>
+
+    <h3>
+        One Exposed API Key, One Cloud Breach
+    </h3>
+
+    <p>
+        A SOC investigation examining an exposed API key,
+        cloud compromise and the NIST CSF 2.0 response.
+    </p>
+
+    <div class="tags">
+        <span class="tag">Cloud</span>
+        <span class="tag">API Key</span>
+        <span class="tag">NIST CSF 2.0</span>
+    </div>
+
+    <a class="read"
+       href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/06-investigating-cloud-api-key-breach-nist-csf">
+
+        Read Article →
+
+    </a>
+
+</article>
+
+
+<!-- 07 -->
+
+<article class="article">
+
+    <div class="article-number">
+        07 · ENDPOINT THREAT HUNTING
+    </div>
+
+    <h3>
+        Hunting Suspicious Process Creation with Sysmon
+    </h3>
+
+    <p>
+        Investigating suspicious process creation using
+        Sysmon Event ID 1 and process relationships.
+    </p>
+
+    <div class="tags">
+        <span class="tag">Sysmon</span>
+        <span class="tag">Event ID 1</span>
+        <span class="tag">Threat Hunting</span>
+    </div>
+
+    <a class="read"
+       href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/07-Hunting-Suspicious-Process-Creation-with-Sysmon-Episode-01">
+
+        Read Article →
+
+    </a>
+
+</article>
+
+
+<!-- 08 -->
+
+<article class="article">
+
+    <div class="article-number">
+        08 · DNS THREAT HUNTING
+    </div>
+
+    <h3>
+        Hunting DNS Activity with Sysmon
+    </h3>
+
+    <p>
+        Investigating DNS activity using Sysmon Event ID 22
+        and determining which processes generated DNS queries.
+    </p>
+
+    <div class="tags">
+        <span class="tag">Sysmon</span>
+        <span class="tag">Event ID 22</span>
+        <span class="tag">DNS</span>
+    </div>
+
+    <a class="read"
+       href="https://github.com/harsha-soudam/harsha-soudam.github.io/tree/main/blogs/08-Hunting-DNS-Activity-with-Sysmon-Episode-02">
+
+        Read Article →
+
+    </a>
+
+</article>
+
+
+</div>
+
+
+</div>
+
+</main>
 
 
 <footer>
 
-    <p>
-        © 2026 Harsha Soudam · Cybersecurity Portfolio
-    </p>
+    <div class="container">
+
+        <p>
+            © 2026 Harsha Vardhan · Cybersecurity Research & Portfolio
+        </p>
+
+    </div>
 
 </footer>
 
